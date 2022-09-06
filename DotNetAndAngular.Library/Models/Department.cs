@@ -1,4 +1,6 @@
-﻿namespace DotNetAndAngular.Library.Models;
+﻿using System.Text.Json.Serialization;
+
+namespace DotNetAndAngular.Library.Models;
 
 public class Department
 {
@@ -9,6 +11,8 @@ public class Department
     [Required]
     [StringLength(60, ErrorMessage = "Department name is too long")]
     public string DepartmentName { get; set; } = string.Empty;
+
+    [JsonIgnore(Condition = JsonIgnoreCondition.Always)]
     public List<Employee> Employees { get; set; } = new();
 
     public Department()

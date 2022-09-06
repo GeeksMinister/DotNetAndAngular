@@ -12,6 +12,3 @@ global using System.ComponentModel.DataAnnotations;
 global using AutoMapper;
 global using DotNetAndAngular.Library.Models;
 global using DotNetAndAngular.Library.Models.Dto;
-//global using Microsoft.AspNetCore.Mvc;
-
-//global using MVC_Razor.MVC.DataAccess.Data;
