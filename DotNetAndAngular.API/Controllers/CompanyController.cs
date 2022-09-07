@@ -36,7 +36,6 @@ public class CompanyController : ControllerBase
     }
 
     [HttpGet("Employee/{guid}")]
-
     public async Task<IActionResult> GetEmployeeById(Guid guid)
     {
         try
@@ -53,7 +52,6 @@ public class CompanyController : ControllerBase
     }
 
     [HttpPost("Employee")]
-
     public async Task<IActionResult> AddEmployee(EmployeeDto dto)
     {
         try
@@ -70,7 +68,7 @@ public class CompanyController : ControllerBase
         }
     }
 
-    [HttpDelete("Employee")]
+    [HttpDelete("Employee/{guid}")]
     public async Task<IActionResult> DeleteEmployee(Guid guid)
     {
         try
@@ -86,7 +84,7 @@ public class CompanyController : ControllerBase
         }
     }
 
-    [HttpPut("Employee")]
+    [HttpPut("Employee/{guid}")]
     public async Task<IActionResult> UpdateEmployee(Guid guid, EmployeeDto dto)
     {
         try

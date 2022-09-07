@@ -9,6 +9,14 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(typeof(MapperInitializer));
 
+builder.Services.AddCors(policy =>
+{
+    policy.AddPolicy("OpenCorsPolicy", opt =>
+    opt.AllowAnyOrigin()
+    .AllowAnyHeader()
+    .AllowAnyMethod());
+});
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -18,6 +26,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors("OpenCorsPolicy");
 
 app.UseAuthorization();
 
