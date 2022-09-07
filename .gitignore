@@ -361,5 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
-/DotNetAndAngular.UI/.vscode
-/DotNetAndAngular.UI/.gitignore
+/DotNetAndAngular_UI/.vscode
+/DotNetAndAngular_UI/.gitignore
+/DotNetAndAngular_UI/.angular/cache/14.2.1
