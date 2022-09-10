@@ -1,8 +1,4 @@
-﻿using DotNetAndAngular.API.DataAccess.Repositories.DepartmentRepository;
-using DotNetAndAngular.API.DataAccess.Repositories.EmployeeRepository;
-using DotNetAndAngular.Library.Models.Dto;
-
-namespace DotNetAndAngular.API.Controllers;
+﻿namespace DotNetAndAngular.API.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
