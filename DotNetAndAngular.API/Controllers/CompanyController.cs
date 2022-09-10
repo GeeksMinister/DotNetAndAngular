@@ -1,8 +1,4 @@
-﻿using DotNetAndAngular.API.DataAccess.Repositories.DepartmentRepository;
-using DotNetAndAngular.API.DataAccess.Repositories.EmployeeRepository;
-using DotNetAndAngular.Library.Models.Dto;
-
-namespace DotNetAndAngular.API.Controllers;
+﻿namespace DotNetAndAngular.API.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
@@ -36,7 +32,6 @@ public class CompanyController : ControllerBase
     }
 
     [HttpGet("Employee/{guid}")]
-
     public async Task<IActionResult> GetEmployeeById(Guid guid)
     {
         try
@@ -53,7 +48,6 @@ public class CompanyController : ControllerBase
     }
 
     [HttpPost("Employee")]
-
     public async Task<IActionResult> AddEmployee(EmployeeDto dto)
     {
         try
@@ -61,7 +55,7 @@ public class CompanyController : ControllerBase
             var employee = _mapper.Map<Employee>(dto);
             employee = await _employeeRepository.AddEmployee(employee);
             if (employee is null) return BadRequest();
-            return CreatedAtAction(nameof(GetEmployeeById), new {Guid = employee.Guid}, employee);
+            return CreatedAtAction(nameof(GetEmployeeById), new { Guid = employee.Guid }, employee);
         }
         catch (Exception)
         {
@@ -70,7 +64,7 @@ public class CompanyController : ControllerBase
         }
     }
 
-    [HttpDelete("Employee")]
+    [HttpDelete("Employee/{guid}")]
     public async Task<IActionResult> DeleteEmployee(Guid guid)
     {
         try
@@ -86,7 +80,7 @@ public class CompanyController : ControllerBase
         }
     }
 
-    [HttpPut("Employee")]
+    [HttpPut("Employee/{guid}")]
     public async Task<IActionResult> UpdateEmployee(Guid guid, EmployeeDto dto)
     {
         try
@@ -111,7 +105,7 @@ public class CompanyController : ControllerBase
         try
         {
             var result = await _departmentRepository.GetAllDepartments();
-            return Ok(result); 
+            return Ok(result);
         }
         catch (Exception ex)
         {
