@@ -8,7 +8,9 @@ public class CompanyController : ControllerBase
     private readonly IEmployeeRepository _employeeRepository;
     private readonly IDepartmentRepository _departmentRepository;
 
-    public CompanyController(IMapper mapper, IEmployeeRepository employeeRepository, IDepartmentRepository departmentRepository)
+    public CompanyController(IMapper mapper,
+                             IEmployeeRepository employeeRepository,
+                             IDepartmentRepository departmentRepository)
     {
         _mapper = mapper;
         _employeeRepository = employeeRepository;

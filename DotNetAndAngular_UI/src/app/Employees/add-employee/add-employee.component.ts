@@ -1,8 +1,8 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Department } from 'src/app/models/department';
+import { Component, OnInit} from '@angular/core';
 import { Employee } from 'src/app/models/employee';
+import { Department } from 'src/app/models/department';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { EmployeeService } from 'src/app/services/employee-service';
 
 
@@ -12,13 +12,11 @@ import { EmployeeService } from 'src/app/services/employee-service';
 })
 
 export class AddEmployeeComponent implements OnInit {
-
-  @Input() newEmployee: Employee = new Employee();
-  @Output() employeesUpdated = new EventEmitter<Employee[]>();
+  constructor(private _employeeServie: EmployeeService, private _router: Router) { }
 
   reactiveForm: any;
-  public departments: Department[] = [];
-  constructor(private _employeeServie: EmployeeService, private _router: Router) { }
+  departments: Department[] = [];
+  newEmployee: Employee = new Employee();
 
   ngOnInit(): void {
     this.reactiveForm = new FormGroup({
@@ -40,12 +38,10 @@ export class AddEmployeeComponent implements OnInit {
       .subscribe((result: Department[]) => (this.departments = result));
   }
 
-  public addEmployee() {
+  addEmployee() {
     if (this.reactiveForm.valid) {
-
-      this._employeeServie.addEmployee(this.newEmployee)
-        .subscribe((employees: Employee[]) => this.employeesUpdated.emit(employees));
-
+      this._employeeServie.addEmployee(this.newEmployee).subscribe();
+      
       this._router.navigateByUrl('').then(() => { window.location.reload() });
     }
   }
